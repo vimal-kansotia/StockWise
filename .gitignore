@@ -1,0 +1,82 @@
+# Git Ignore
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment files
+.env
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# Data and Artifacts (Preserve directory structure via .gitkeep)
+data/raw/*
+!data/raw/.gitkeep
+data/bronze/*
+!data/bronze/.gitkeep
+data/silver/*
+!data/silver/.gitkeep
+data/gold/*
+!data/gold/.gitkeep
+data/synthetic/*
+!data/synthetic/.gitkeep
+artifacts/models/*
+!artifacts/models/.gitkeep
+artifacts/metrics/*
+!artifacts/metrics/.gitkeep
+
+# Spark / Java / Airflow
+metastore_db/
+derby.log
+*.spark.log
+spark-warehouse/
+airflow/logs/
+airflow/airflow.cfg
+airflow/airflow.db
+airflow/webserver_config.py
+
+# Local Databases, Private Keys & Sensitive Exports
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+data/*.sqlite
+*.pem
+*.key
+*.crt
+*.pfx
+secrets/
+*.log
+exports/
+sensitive/

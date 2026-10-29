@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockWise Intelligence | Enterprise Demand Forecasting & Replenishment</title>
+  <meta name="description" content="Production-grade Smart Inventory and Demand Forecasting System with LightGBM, Apache Spark, and Medallion Lakehouse architecture.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/index.css">
+  <!-- Chart.js for data visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="app-container">
+    <!-- Compact, Professional Sidebar -->
+    <aside id="sidebar">
+      <div class="brand-header">
+        <div class="brand-icon">
+          <i class="fa-solid fa-cubes-stacked"></i>
+        </div>
+        <div class="brand-text">
+          <h1>StockWise</h1>
+          <p>Intelligence Platform</p>
+        </div>
+      </div>
+
+      <div class="sidebar-scroll">
+        <!-- Overview -->
+        <div class="nav-section">
+          <div class="nav-section-title">Overview</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item active" data-page="executive-dashboard" id="nav-executive-dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Executive Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Forecasting -->
+        <div class="nav-section">
+          <div class="nav-section-title">Forecasting</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="demand-forecasts" id="nav-demand-forecasts">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Demand Forecasts</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="forecast-explorer" id="nav-forecast-explorer">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <span>Forecast Explorer</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="model-performance" id="nav-model-performance">
+                <i class="fa-solid fa-award"></i>
+                <span>Model Performance</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Inventory Intelligence -->
+        <div class="nav-section">
+          <div class="nav-section-title">Inventory Intelligence</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="inventory-overview" id="nav-inventory-overview">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Inventory Overview</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="inventory-risk" id="nav-inventory-risk">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Inventory Risk & Alerts</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="replenishment" id="nav-replenishment">
+                <i class="fa-solid fa-cart-flatbed"></i>
+                <span>Replenishment Advice</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="product-details" id="nav-product-details">
+                <i class="fa-solid fa-barcode"></i>
+                <span>Product Details</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Operations -->
+        <div class="nav-section">
+          <div class="nav-section-title">Operations</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="purchase-orders" id="nav-purchase-orders">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Purchase Orders</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="stock-movements" id="nav-stock-movements">
+                <i class="fa-solid fa-right-left"></i>
+                <span>Stock Movements</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="data-imports" id="nav-data-imports">
+                <i class="fa-solid fa-file-arrow-up"></i>
+                <span>Data Imports</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Data Platform -->
+        <div class="nav-section">
+          <div class="nav-section-title">Data Platform</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="data-pipeline" id="nav-data-pipeline">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Data Pipeline</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="data-quality" id="nav-data-quality">
+                <i class="fa-solid fa-clipboard-check"></i>
+                <span>Data Quality</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="job-monitoring" id="nav-job-monitoring">
+                <i class="fa-solid fa-server"></i>
+                <span>Job Runs & Cluster</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Reports -->
+        <div class="nav-section">
+          <div class="nav-section-title">Reports</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="report-executive" id="nav-report-executive">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Executive Report</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="report-forecast" id="nav-report-forecast">
+                <i class="fa-solid fa-file-waveform"></i>
+                <span>Demand Forecast Report</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="report-risk" id="nav-report-risk">
+                <i class="fa-solid fa-file-shield"></i>
+                <span>Inventory Risk Report</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="report-replenishment" id="nav-report-replenishment">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span>Replenishment Report</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="report-evaluation" id="nav-report-evaluation">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Model Evaluation Report</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="report-quality" id="nav-report-quality">
+                <i class="fa-solid fa-file-shield"></i>
+                <span>Data Quality Report</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Administration -->
+        <div class="nav-section">
+          <div class="nav-section-title">Administration</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="system-health" id="nav-system-health">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <span>System Health</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="configuration" id="nav-configuration">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Configuration</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Governance & Legal -->
+        <div class="nav-section">
+          <div class="nav-section-title">Governance & Privacy</div>
+          <ul class="nav-list">
+            <li>
+              <a class="nav-item" data-page="legal-privacy" id="nav-legal-privacy">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Privacy & Retention</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-item" data-page="legal-terms" id="nav-legal-terms">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Terms of Service</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div class="user-avatar" id="user-avatar-initials">LP</div>
+          <div class="user-info">
+            <div class="user-name" id="user-display-name">Lead Planner</div>
+            <div class="user-role" id="user-display-role">OWNER &bull; default_corp</div>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btn-switch-account" title="Switch User / Tenant" style="padding: 0.25rem 0.4rem;">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div id="main-wrapper">
+      <header id="topbar">
+        <div class="topbar-left">
+          <div>
+            <h1 class="page-title" id="page-heading">Executive Dashboard</h1>
+            <div class="page-subtitle" id="page-subheading">Live inventory telemetry, risk signals, and replenishment outlook</div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div id="tenant-selector-wrap" style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: 600;">BUSINESS:</span>
+            <select class="select-control" id="business-select" style="font-size: 0.8rem; padding: 0.35rem 0.6rem;">
+              <option value="default_corp">default_corp (Default Corporation)</option>
+              <option value="biz_po_test">biz_po_test (PO Test Retail)</option>
+              <option value="smoke_retail_corp">smoke_retail_corp (Smoke Retail Corp)</option>
+            </select>
+          </div>
+
+          <button class="btn btn-secondary btn-sm" id="btn-theme-toggle" title="Switch Theme (Light / Dark)">
+            <i class="fa-solid fa-moon" id="theme-toggle-icon"></i>
+            <span id="theme-toggle-text">Dark</span>
+          </button>
+
+          <button class="btn btn-secondary btn-sm" id="btn-refresh-data" title="Refresh Live Backend Data">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <span>Refresh</span>
+          </button>
+
+          <a href="/docs" target="_blank" class="btn btn-secondary btn-sm" title="FastAPI Swagger Documentation">
+            <i class="fa-solid fa-book"></i>
+            <span>API Docs</span>
+          </a>
+        </div>
+      </header>
+
+      <main id="content-area">
+        <!-- Rendered asynchronously by app.js -->
+        <div style="display: flex; align-items: center; justify-content: center; height: 300px; color: var(--text-dim);">
+          <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 1.5rem; margin-right: 0.75rem;"></i>
+          <span>Loading StockWise Intelligence...</span>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Reusable Modals & Dialogs -->
+  <div id="modal-container" style="display: none;"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

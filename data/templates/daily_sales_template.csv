@@ -1,0 +1,5 @@
+store_id,item_id,date,units_sold,sell_price,has_event
+CA_1,FOODS_1_001,2024-03-01,15,3.99,0
+CA_1,FOODS_1_001,2024-03-02,22,3.99,0
+CA_1,FOODS_1_001,2024-03-03,18,3.99,0
+CA_1,HOUSEHOLD_1_001,2024-03-01,8,7.50,1
